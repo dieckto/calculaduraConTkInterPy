@@ -1,0 +1,38 @@
+from docx import Document
+from datetime import datetime
+
+# Crear documento
+doc = Document()
+
+# Título
+doc.add_heading("Ficha de Análisis - JRPG", level=0)
+
+# Datos
+doc.add_paragraph("Nombre: Diego Israel Curiel Gutiérrez")
+doc.add_paragraph(f"Fecha: {datetime.now().strftime('%d/%m/%Y')}")
+doc.add_paragraph("Clase: Videojuegos y Análisis de Mecánicas")
+doc.add_paragraph("Juego: Chrono Trigger (1995)")
+
+# Secciones de análisis
+analisis = [
+    ("MECÁNICAS", 
+     "La acción principal es explorar el mundo, hablar con personajes y combatir en batallas por turnos usando ataques normales, habilidades especiales y combinaciones en equipo."),
+    ("APRENDER A JUGAR", 
+     "El juego enseña de manera gradual: primero te muestra cómo moverte y hablar con otros, luego introduce combates sencillos. Las explicaciones son claras y fáciles de entender."),
+    ("CURVA DE APRENDIZAJE", 
+     "La dificultad aumenta poco a poco. Al inicio los enemigos son simples, pero luego aparecen jefes más complejos y la necesidad de usar estrategias como habilidades combinadas o administrar mejor los recursos."),
+    ("EMOCIONES", 
+     "La música transmite emoción y se adapta a cada época del juego. Los gráficos coloridos y el estilo de Akira Toriyama hacen que te sientas inmerso, motivado y en algunos momentos presionado en combates difíciles."),
+    ("MEJORA DE DISEÑO", 
+     "Podría mejorarse con explicaciones más detalladas sobre las combinaciones de ataques y quizá un sistema de mapa más claro para ubicarte mejor en cada época.")
+]
+
+for titulo_sec, texto in analisis:
+    doc.add_heading(titulo_sec, level=1)
+    doc.add_paragraph(texto)
+
+# Guardar archivo en Word
+nombre_archivo = "Ficha_JRPG_Diego.docx"
+doc.save(nombre_archivo)
+
+print(f"Archivo Word generado: {nombre_archivo}")
